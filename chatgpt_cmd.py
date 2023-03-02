@@ -17,10 +17,9 @@ def main():
 
     while True:
         user_input = input("> Shinan: ").strip()
-        print('\n')
+        print()
         if user_input == "q":
-            history.append({"role": "user", 
-                            "content": "summarize the entire conversation in under 4 words"})
+            history.append({"role": "user", "content": "summarize the entire conversation in under 4 words"})
             with open(f'chat_history/{get_response(history[1:])}csv', mode='w', newline='') as file:
                 writer = csv.DictWriter(file, fieldnames=["role", "content"])
                 writer.writeheader()
@@ -28,7 +27,6 @@ def main():
                     writer.writerow(row)
             break
         history.append({"role": "user", "content": user_input})
-
         rsp_content = get_response(history)
         print(f'> ChatGPT: {rsp_content}\n')
         history.append({"role": "assistant", "content": rsp_content})
