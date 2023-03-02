@@ -4,7 +4,6 @@ import os
 
 openai.api_key = os.environ.get('OPENAI_API_KEY')
 chat_history_dir = os.environ.get('CHAT_HISTORY_DIR')
-print(chat_history_dir)
 
 def get_response(chat):
     response = openai.ChatCompletion.create(
