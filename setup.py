@@ -7,6 +7,11 @@ setup(
     author_email='shinanliu@uchicago.edu',
     description='Simply a ChatGPT command line tool, which saves all chat history to .csv',
     url='https://github.com/shinan6/chatgpt_cmd',
+    entry_points={
+        'console_scripts': [
+        'chatgpt = chatgpt_cmd:main',
+        ],
+    },
     install_requires=[
         'openai==0.27.0',
         'setuptools==49.2.0.post20200714'

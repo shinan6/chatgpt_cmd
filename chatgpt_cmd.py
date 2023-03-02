@@ -3,6 +3,8 @@ import csv
 import os
 
 openai.api_key = os.environ.get('OPENAI_API_KEY')
+chat_history_dir = os.environ.get('CHAT_HISTORY_DIR')
+print(chat_history_dir)
 
 def get_response(chat):
     response = openai.ChatCompletion.create(
@@ -13,7 +15,7 @@ def get_response(chat):
 
 def save_chat(chat):
     chat.append({"role": "user", "content": "summarize the entire conversation in under 4 words"})
-    with open(f'chat_history/{get_response(chat[1:])}csv', mode='w', newline='') as file:
+    with open(f'{chat_history_dir}/{get_response(chat[1:])}csv', mode='w', newline='') as file:
         writer = csv.DictWriter(file, fieldnames=["role", "content"])
         writer.writeheader()
         for row in chat[1:-1]:
